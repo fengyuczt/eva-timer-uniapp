@@ -1,0 +1,19 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "NERV EVA Timer",
+				"navigationStyle": "custom",
+				"pageOrientation": "landscape"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "NERV EVA Timer",
+		"navigationBarBackgroundColor": "#000000",
+		"backgroundColor": "#000000"
+	},
+	"uniIdRouter": {}
+}

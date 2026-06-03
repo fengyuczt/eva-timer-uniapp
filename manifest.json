@@ -1,0 +1,70 @@
+{
+	"name": "NERV EVA Timer",
+	"appid": "",
+	"description": "Evangelion timer packaged for uni-app with local assets.",
+	"versionName": "1.0.0",
+	"versionCode": "100",
+	"screenOrientation": [
+		"landscape-primary"
+	],
+	"uni-app-x": {},
+	"quickapp": {},
+	"mp-weixin": {
+		"appid": "",
+		"setting": {
+			"urlCheck": false
+		},
+		"usingComponents": true
+	},
+	"mp-alipay": {
+		"usingComponents": true
+	},
+	"mp-baidu": {
+		"usingComponents": true
+	},
+	"mp-toutiao": {
+		"usingComponents": true
+	},
+	"uniStatistics": {
+		"enable": false
+	},
+	"vueVersion": "3",
+	"app": {
+		"distribute": {
+			"icons": {
+				"android": {
+					"hdpi": "static/eva/images/favicon.png",
+					"xhdpi": "static/eva/images/favicon.png",
+					"xxhdpi": "static/eva/images/favicon.png",
+					"xxxhdpi": "static/eva/images/favicon.png"
+				}
+			}
+		}
+	},
+	"app-android": {
+		"distribute": {
+			"modules": {},
+			"icons": {
+				"hdpi": "static/eva/images/favicon.png",
+				"xhdpi": "static/eva/images/favicon.png",
+				"xxhdpi": "static/eva/images/favicon.png",
+				"xxxhdpi": "static/eva/images/favicon.png"
+			},
+			"splashScreens": {
+				"default": {}
+			}
+		}
+	},
+	"app-ios": {
+		"distribute": {
+			"modules": {},
+			"icons": {},
+			"splashScreens": {}
+		}
+	},
+	"web": {
+		"router": {
+			"mode": ""
+		}
+	}
+}

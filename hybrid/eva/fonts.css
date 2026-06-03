@@ -1,0 +1,24 @@
+/* Fonts for EVA timer */
+
+@font-face {
+    font-family: ArialRoundedMT;
+    src:
+        url("fonts/arial-rounded-mt/Arial-Rounded-MT.woff2") format("woff2"),
+        url("fonts/arial-rounded-mt/Arial-Rounded-MT.woff") format("woff"),
+        url("fonts/arial-rounded-mt/Arial-Rounded-MT.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: TrueLCDNGE;
+    src:
+        url("fonts/true-lcd-nge/true-lcd-nge.woff2") format("woff2"),
+        url("fonts/true-lcd-nge/true-lcd-nge.woff") format("woff"),
+        url("fonts/true-lcd-nge/true-lcd-nge.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: SevenSegment;
+    src:
+        url("fonts/7segment/7segment.woff") format("woff"),
+        url("fonts/7segment/7segment.ttf") format("truetype");
+}

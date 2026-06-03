@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>活動限界まであと (PyScript)</title>
+    <!-- icons -->
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+	<link rel="apple-touch-icon" type="image/png" href="images/favicon.png">
+    <!-- pwa -->
+    <link rel="manifest" href="manifest.json">
+    <script>
+		if (navigator && navigator.serviceWorker) {
+			navigator.serviceWorker.register('sw.js').then(() => {
+                console.log('[serviceWorker] registered');
+            }).catch((error) => {
+                console.log('[serviceWorker] registration failed with ' + error);
+            });
+		}
+	</script>
+    <!-- fonts -->
+    <link rel="stylesheet" href="fonts.css">
+    <!-- Pyscript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.03.1/pyscript.js"></script>
+</head>
+
+<body style="background-color: black;">
+    <div id="parent" style="background-color: black;">
+        <div id="timer"></div>
+        <div id="settings"></div>
+    </div>
+
+    <py-script src="py/timer.py"></py-script>
+    <py-script src="py/svgui.py"></py-script>
+    <py-script src="py/eva-timer.py"></py-script>
+    <py-script>
+        # Config
+        params = URLSearchParams.new(window.location.search)
+        config = {
+            "mode": int(params.get("mode") or 0),
+            "autoplay": bool(int(params.get("autoplay") or 0)),
+            "tilted": bool(int(params.get("tilted") or 1)),
+            "fullscreen": bool(int(params.get("fullscreen") or 0)),
+            "theme": params.get("theme") or "default",
+            "duration": int(params.get("duration") or 300),
+            "emergency_duration": int(params.get("emergency_duration") or 60),
+        }
+
+        # Parent Div
+        gui_parent = Div("parent").select()
+
+        # Timer View
+        gui_timer = Div("timer").load(svg="images/eva-timer.svg", css="eva-timer.css").select()
+
+        # Settings View
+        gui_settings = Div("settings").load(html="settings.html").popup().select()
+
+        # Register events
+        register_event_listeners_timer()
+        register_event_listeners_settings()
+        register_keyboard_listeners()
+
+        # Timer Model
+        timer = Timer(
+            interval=35./1000,
+            duration=config["duration"],
+            emergency_duration=config["emergency_duration"],
+            mode=config["mode"],
+            status_callback=status_callback,
+            render_callback=render_callback,
+            config_callback=config_callback,
+        )
+        timer.reset()
+        config_callback()
+
+        # Init
+        gui_timer.toggle_class(STY.VIEW_TILTED)
+
+        # Config
+        if config["autoplay"] == 1:
+            timer.play()
+        if config["tilted"] == 0:
+            gui_timer.toggle_class(STY.VIEW_FLATTENED)
+        if config["fullscreen"] == 1:
+            gui_parent.request_fullscreen()
+        if config["theme"] == "wireframe":
+            toggle_wireframe()
+        elif config["theme"] == "greyscale":
+            toggle_greyscale()
+        elif config["theme"] == "rebuild":
+            toggle_theme_rebuild()
+    </py-script>
+
+    </body>
+</html>
